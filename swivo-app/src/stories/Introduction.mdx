@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Docs/Introduction" />
+
+# Swivo Storybook
+
+Catalogue interactif des composants React du SPA Swivo.
+
+## Conventions
+
+- Tailwind + design tokens dans `src/styles/theme.css`.
+- Toggle thème **Light / Dark** dans la barre d'outils → `data-theme="dark"` sur `<html>`.
+- Viewports : `mobile` (390×844), `tablet` (820×1180), `desktop` (1440×900).
+- Routes simulées via `MemoryRouter`. Override par story via `parameters.route`.
+
+## Workflow dev
+
+```bash
+npm run storybook          # SB seul sur :6006
+npm run dev:all            # Vite (:5173) + SB (:6006) en parallèle
+npm run build-storybook    # bundle statique pour Chromatic / GitHub Pages
+```
+
+## Ajouter un composant
+
+1. Créer `src/components/Foo.tsx`.
+2. Créer `src/stories/Foo.stories.tsx` à côté.
+3. Une story par variante visuelle. Tests d'interactions via `@storybook/test`.
+4. Accessibilité auto via `addon-a11y` — corriger avant merge.

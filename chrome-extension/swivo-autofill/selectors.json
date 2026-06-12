@@ -1,0 +1,363 @@
+{
+  "$schema": "Swivo Autofill — semantic mapping for Guichet unique micro-entreprise creation (procedure.inpi.fr, formalites.entreprises.gouv.fr). Per key: names (input name/id), labels (visible label/aria-label/placeholder fuzzy matches), selectors (explicit CSS), type (text/select/radio/date/combobox), transform (date_fr/date_iso/upper/lower/capitalize).",
+
+  "_pages": {
+    "p1_identite":  ["civilite", "prenom", "prenomsTous", "nom", "nomUsage", "pseudonyme", "dateNaissance", "lieuNaissance", "paysNaissance", "departementNaissance", "nationalite", "sexe"],
+    "p2_domicile":  ["domicileAdresse", "domicileComplement", "domicileCodePostal", "domicileCommune", "domicilePays", "domicileNumeroVoie", "domicileTypeVoie", "domicileNomVoie"],
+    "p3_contact":   ["email", "telephone", "mobile"],
+    "p4_activite":  ["activiteLibelle", "activite", "natureActivite", "categorieActivite", "codeApe", "codeNaf", "qualiteArtisan", "dateDebutActivite", "commercantSedentaire", "ambulant"],
+    "p5_siege":     ["siegeAdresse", "siegeComplement", "siegeCodePostal", "siegeCommune", "siegePays", "siegeDomiciliation", "meneActiviteDomicile", "destinationCorrespondance", "denomination", "sigle", "enseigne", "nomCommercial"],
+    "p6_fiscal":    ["regimeFiscal", "regimeImposition", "versementLiberatoire", "regimeTva", "optionTva"],
+    "p7_social":    ["regimeSocial", "caisseRetraite", "acre", "exonerationDebutActivite", "insaisissabilite", "renonciationInsaisissabilite"],
+    "p8_conjoint":  ["conjointCollaborateur", "conjointCivilite", "conjointPrenom", "conjointNom", "conjointDateNaissance"],
+    "p9_piece":     ["pieceIdentiteType", "pieceIdentiteNumero", "pieceIdentiteDelivrance", "pieceIdentiteExpiration", "pieceIdentiteAutorite", "nir"]
+  },
+
+  "civilite": {
+    "type": "radio_or_select",
+    "names": ["civilite", "civility", "titre", "title", "genre"],
+    "labels": ["civilité", "titre", "monsieur ou madame", "m./mme"]
+  },
+  "sexe": {
+    "type": "radio_or_select",
+    "names": ["sexe", "gender"],
+    "labels": ["sexe", "genre"]
+  },
+  "prenom": {
+    "type": "text",
+    "transform": "capitalize",
+    "names": ["prenom", "firstName", "givenName", "prenom1", "prenomDeclarant", "personnePhysique.prenom"],
+    "labels": ["prénom", "first name", "prénom usuel", "1er prénom", "premier prénom"]
+  },
+  "prenom1": {
+    "type": "text",
+    "names": ["prenom1", "firstName1"],
+    "labels": ["1er prénom", "premier prénom"]
+  },
+  "prenom2": {
+    "type": "text",
+    "names": ["prenom2", "secondPrenom"],
+    "labels": ["2e prénom", "deuxième prénom", "second prénom"]
+  },
+  "prenom3": {
+    "type": "text",
+    "names": ["prenom3", "troisiemePrenom"],
+    "labels": ["3e prénom", "troisième prénom"]
+  },
+  "prenomsTous": {
+    "type": "text",
+    "names": ["prenomsTous", "prenoms", "allFirstNames", "givenNames", "prenomsEtatCivil"],
+    "labels": ["tous les prénoms", "prénoms d'état civil", "prénoms"]
+  },
+  "nom": {
+    "type": "text",
+    "transform": "upper",
+    "names": ["nom", "lastName", "familyName", "nomNaissance", "nomDeNaissance", "personnePhysique.nom"],
+    "labels": ["nom de naissance", "nom de famille", "nom"]
+  },
+  "nomNaissance": {
+    "type": "text",
+    "names": ["nomNaissance", "birthName"],
+    "labels": ["nom de naissance"]
+  },
+  "nomUsage": {
+    "type": "text",
+    "names": ["nomUsage", "nomDUsage", "nomMarital", "marriedName"],
+    "labels": ["nom d'usage", "nom marital"]
+  },
+  "pseudonyme": {
+    "type": "text",
+    "names": ["pseudonyme", "pseudo"],
+    "labels": ["pseudonyme", "nom d'artiste"]
+  },
+
+  "dateNaissance": {
+    "type": "date",
+    "transform": "date_fr",
+    "names": ["dateNaissance", "birthDate", "dateDeNaissance", "dateNaiss"],
+    "labels": ["date de naissance", "né le", "née le"]
+  },
+  "jourNaissance": { "type": "text", "names": ["jourNaissance"], "labels": ["jour de naissance"] },
+  "moisNaissance": { "type": "text", "names": ["moisNaissance"], "labels": ["mois de naissance"] },
+  "anneeNaissance": { "type": "text", "names": ["anneeNaissance"], "labels": ["année de naissance"] },
+
+  "lieuNaissance": {
+    "type": "combobox",
+    "names": ["lieuNaissance", "communeNaissance", "villeNaissance", "birthPlace", "communeNaiss"],
+    "labels": ["lieu de naissance", "ville de naissance", "commune de naissance"]
+  },
+  "communeNaissance": { "type": "combobox", "names": ["communeNaissance"], "labels": ["commune de naissance"] },
+  "codeInseeNaissance": { "type": "text", "names": ["codeInseeNaissance", "codeCommuneNaissance"], "labels": ["code insee naissance", "code commune naissance"] },
+  "departementNaissance": {
+    "type": "select",
+    "names": ["departementNaissance", "departmentNaissance"],
+    "labels": ["département de naissance"]
+  },
+  "paysNaissance": {
+    "type": "combobox",
+    "names": ["paysNaissance", "birthCountry"],
+    "labels": ["pays de naissance"]
+  },
+  "nationalite": {
+    "type": "combobox",
+    "names": ["nationalite", "nationality"],
+    "labels": ["nationalité"]
+  },
+
+  "domicileNumeroVoie": { "type": "text", "names": ["domicileNumeroVoie", "numeroVoieDomicile", "numeroDomicile"], "labels": ["numéro de voie domicile", "n° voie", "n° de voie"] },
+  "domicileTypeVoie":   { "type": "select", "names": ["typeVoieDomicile"], "labels": ["type de voie domicile"] },
+  "domicileNomVoie":    { "type": "text", "names": ["nomVoieDomicile"], "labels": ["nom de voie domicile"] },
+  "domicileAdresse": {
+    "type": "text",
+    "names": ["adresseDomicile", "domicile", "adressePersonnelle", "adresseLigne1", "ligne1Domicile"],
+    "labels": ["adresse du domicile", "adresse personnelle", "adresse complète"]
+  },
+  "domicileComplement": {
+    "type": "text",
+    "names": ["complementAdresseDomicile", "complementDomicile", "domicileComplement"],
+    "labels": ["complément d'adresse domicile", "complément d'adresse"]
+  },
+  "domicileCodePostal": {
+    "type": "text",
+    "names": ["cpDomicile", "codePostalDomicile", "domicileCp"],
+    "labels": ["code postal domicile", "code postal", "cp"]
+  },
+  "domicileCommune": {
+    "type": "combobox",
+    "names": ["communeDomicile", "villeDomicile"],
+    "labels": ["commune domicile", "ville domicile", "commune", "ville"]
+  },
+  "domicileCodeInsee": { "type": "text", "names": ["codeInseeDomicile"], "labels": ["code insee domicile"] },
+  "domicilePays": {
+    "type": "combobox",
+    "names": ["paysDomicile"],
+    "labels": ["pays domicile", "pays"]
+  },
+
+  "email": {
+    "type": "email",
+    "transform": "lower",
+    "names": ["email", "mail", "courriel", "emailPersonnel", "courrielDeclarant"],
+    "labels": ["email", "courriel", "adresse électronique", "e-mail"]
+  },
+  "emailPro": {
+    "type": "email",
+    "transform": "lower",
+    "names": ["emailPro", "emailProfessionnel"],
+    "labels": ["email professionnel", "courriel professionnel"]
+  },
+  "telephone": {
+    "type": "tel",
+    "names": ["telephone", "phone", "tel", "telFixe", "telephoneDeclarant"],
+    "labels": ["téléphone", "tél", "numéro de téléphone"]
+  },
+  "mobile": {
+    "type": "tel",
+    "names": ["mobile", "portable", "telMobile"],
+    "labels": ["portable", "mobile", "téléphone portable"]
+  },
+
+  "activiteLibelle": {
+    "type": "text",
+    "names": ["activite", "activitePrincipale", "libelleActivite", "descriptionActivite"],
+    "labels": ["activité principale", "description de l'activité", "libellé de l'activité", "description de votre activité"]
+  },
+  "activite": {
+    "type": "text",
+    "names": ["activite", "activitePrincipale"],
+    "labels": ["activité"]
+  },
+  "descriptionActivite": {
+    "type": "textarea",
+    "names": ["descriptionActivite", "descriptionPrecise"],
+    "labels": ["description précise de l'activité", "détail de l'activité"]
+  },
+  "natureActivite": {
+    "type": "radio_or_select",
+    "names": ["natureActivite", "categorieActivite", "categorie"],
+    "labels": ["nature de l'activité", "catégorie d'activité", "type d'activité"]
+  },
+  "categorieActivite": {
+    "type": "radio_or_select",
+    "names": ["categorieActivite"],
+    "labels": ["catégorie", "type d'activité"]
+  },
+  "codeApe": { "type": "text", "names": ["codeApe", "ape"], "labels": ["code ape", "ape"] },
+  "codeNaf": { "type": "text", "names": ["codeNaf", "naf"], "labels": ["code naf", "naf"] },
+  "qualiteArtisan": { "type": "radio_or_select", "names": ["qualiteArtisan", "artisan"], "labels": ["qualité d'artisan", "êtes-vous artisan"] },
+  "commercantSedentaire": { "type": "radio_or_select", "names": ["commercantSedentaire", "sedentaire"], "labels": ["commerçant sédentaire", "sédentarité"] },
+  "ambulant": { "type": "radio_or_select", "names": ["ambulant"], "labels": ["ambulant", "activité ambulante"] },
+  "dateDebutActivite": {
+    "type": "date",
+    "transform": "date_fr",
+    "names": ["dateDebut", "dateDebutActivite", "dateCreation", "dateDebutExercice"],
+    "labels": ["date de début d'activité", "date de création", "date de début d'exercice"]
+  },
+
+  "denomination": {
+    "type": "text",
+    "names": ["denomination", "denominationSociale", "nomCommercial", "raisonSociale"],
+    "labels": ["dénomination", "nom commercial", "raison sociale", "dénomination sociale"]
+  },
+  "sigle": { "type": "text", "names": ["sigle"], "labels": ["sigle"] },
+  "enseigne": { "type": "text", "names": ["enseigne"], "labels": ["enseigne"] },
+  "nomCommercial": { "type": "text", "names": ["nomCommercial"], "labels": ["nom commercial"] },
+  "objetSocial": { "type": "textarea", "names": ["objetSocial", "objet"], "labels": ["objet social", "objet de l'activité"] },
+
+  "siegeAdresse": {
+    "type": "text",
+    "names": ["adresseSiege", "siege", "adresseEtablissement", "adresseEntreprise", "adresseLigne1Siege"],
+    "labels": ["adresse du siège", "adresse de l'établissement", "adresse professionnelle", "adresse d'exercice"]
+  },
+  "siegeNumeroVoie": { "type": "text", "names": ["numeroVoieSiege"], "labels": ["numéro de voie siège", "n° de voie"] },
+  "siegeTypeVoie":   { "type": "select", "names": ["typeVoieSiege"], "labels": ["type de voie siège"] },
+  "siegeNomVoie":    { "type": "text", "names": ["nomVoieSiege"], "labels": ["nom de voie siège"] },
+  "siegeComplement": {
+    "type": "text",
+    "names": ["complementAdresseSiege", "complementSiege"],
+    "labels": ["complément d'adresse siège"]
+  },
+  "siegeCodePostal": {
+    "type": "text",
+    "names": ["cpSiege", "codePostalSiege", "codePostalEtablissement"],
+    "labels": ["code postal du siège", "code postal de l'établissement", "cp siège"]
+  },
+  "siegeCommune": {
+    "type": "combobox",
+    "names": ["communeSiege", "villeSiege", "communeEtablissement"],
+    "labels": ["commune du siège", "ville du siège", "commune de l'établissement"]
+  },
+  "siegeCodeInsee": { "type": "text", "names": ["codeInseeSiege"], "labels": ["code insee siège"] },
+  "siegePays": { "type": "combobox", "names": ["paysSiege"], "labels": ["pays du siège"] },
+  "siegeDomiciliation": {
+    "type": "radio_or_select",
+    "names": ["typeAdresseSiege", "domiciliation", "natureSiege"],
+    "labels": ["type de domiciliation", "nature du siège", "où exercez-vous"]
+  },
+  "meneActiviteDomicile": {
+    "type": "radio_or_select",
+    "names": ["activiteAuDomicile", "exerceAuDomicile"],
+    "labels": ["activité à domicile", "exercez-vous à votre domicile"]
+  },
+  "destinationCorrespondance": {
+    "type": "radio_or_select",
+    "names": ["destinationCorrespondance", "adresseCorrespondance"],
+    "labels": ["adresse de correspondance", "où recevoir le courrier"]
+  },
+
+  "regimeFiscal": {
+    "type": "radio_or_select",
+    "names": ["regimeFiscal", "regimeImposition"],
+    "labels": ["régime fiscal", "régime d'imposition", "régime applicable"]
+  },
+  "regimeImposition": {
+    "type": "radio_or_select",
+    "names": ["regimeImposition"],
+    "labels": ["régime d'imposition", "régime des bénéfices"]
+  },
+  "versementLiberatoire": {
+    "type": "radio_or_select",
+    "names": ["versementLiberatoire", "optionVL", "vlForfaitaire", "versementLiberatoireIR"],
+    "labels": ["versement libératoire", "option pour le versement libératoire", "vl forfaitaire"]
+  },
+  "regimeTva": {
+    "type": "radio_or_select",
+    "names": ["regimeTva", "tva"],
+    "labels": ["régime de tva", "tva", "franchise en base"]
+  },
+  "optionTva": {
+    "type": "radio_or_select",
+    "names": ["optionTva", "tvaOption"],
+    "labels": ["option tva", "opter pour la tva"]
+  },
+
+  "regimeSocial": {
+    "type": "radio_or_select",
+    "names": ["regimeSocial", "organismeRattachement"],
+    "labels": ["régime social", "caisse de rattachement", "organisme social"]
+  },
+  "caisseRetraite": {
+    "type": "radio_or_select",
+    "names": ["caisseRetraite", "caisseAffiliation"],
+    "labels": ["caisse de retraite", "caisse d'affiliation"]
+  },
+  "acre": {
+    "type": "radio_or_select",
+    "names": ["acre", "demandeAcre", "beneficeAcre", "exonerationDebutActivite"],
+    "labels": ["acre", "aide à la création", "exonération début d'activité"]
+  },
+  "insaisissabilite": {
+    "type": "radio_or_select",
+    "names": ["insaisissabilite", "residencePrincipale"],
+    "labels": ["déclaration d'insaisissabilité", "insaisissabilité de la résidence principale"]
+  },
+  "renonciationInsaisissabilite": {
+    "type": "radio_or_select",
+    "names": ["renonciationInsaisissabilite"],
+    "labels": ["renonciation à l'insaisissabilité"]
+  },
+
+  "conjointCollaborateur": {
+    "type": "radio_or_select",
+    "names": ["conjointCollaborateur"],
+    "labels": ["conjoint collaborateur"]
+  },
+  "conjointCivilite": { "type": "radio_or_select", "names": ["civiliteConjoint"], "labels": ["civilité du conjoint"] },
+  "conjointPrenom":   { "type": "text", "names": ["prenomConjoint"], "labels": ["prénom du conjoint"] },
+  "conjointNom":      { "type": "text", "names": ["nomConjoint"], "labels": ["nom du conjoint"] },
+  "conjointDateNaissance": { "type": "date", "transform": "date_fr", "names": ["dateNaissanceConjoint"], "labels": ["date de naissance du conjoint"] },
+
+  "pieceIdentiteType": {
+    "type": "radio_or_select",
+    "names": ["typePieceIdentite", "typeDocument"],
+    "labels": ["type de pièce d'identité", "type de document"]
+  },
+  "pieceIdentiteNumero": {
+    "type": "text",
+    "names": ["numeroPieceIdentite", "numCNI", "numeroDocument"],
+    "labels": ["numéro de la pièce d'identité", "n° cni", "numéro de cni", "numéro du passeport"]
+  },
+  "pieceIdentiteExpiration": {
+    "type": "date",
+    "transform": "date_fr",
+    "names": ["dateExpirationPieceIdentite", "expirationDocument"],
+    "labels": ["date d'expiration de la pièce", "validité de la pièce"]
+  },
+  "pieceIdentiteDelivrance": {
+    "type": "date",
+    "transform": "date_fr",
+    "names": ["dateDelivrancePieceIdentite"],
+    "labels": ["date de délivrance"]
+  },
+  "pieceIdentiteAutorite": {
+    "type": "text",
+    "names": ["autoriteDelivrance"],
+    "labels": ["autorité de délivrance", "préfecture"]
+  },
+  "nir": {
+    "type": "text",
+    "names": ["nir", "numeroSecuriteSociale", "nss"],
+    "labels": ["numéro de sécurité sociale", "nir"]
+  },
+
+  "situationMatrimoniale": {
+    "type": "radio_or_select",
+    "names": ["situationMatrimoniale", "etatCivil"],
+    "labels": ["situation matrimoniale", "état civil"]
+  },
+  "capitalMontant": {
+    "type": "text",
+    "names": ["capital", "capitalSocial", "montantCapital"],
+    "labels": ["capital social", "montant du capital"]
+  },
+  "formeJuridiqueCode": {
+    "type": "select",
+    "names": ["formeJuridique", "codeFormeJuridique"],
+    "labels": ["forme juridique", "code forme juridique"]
+  },
+  "formeJuridiqueLib": {
+    "type": "radio_or_select",
+    "names": ["formeJuridiqueLibelle"],
+    "labels": ["libellé forme juridique"]
+  }
+}

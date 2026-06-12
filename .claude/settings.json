@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"systemMessage\": \"Caveman ultra mode active: abbreviate (DB/auth/config/req/res/fn/impl), strip articles/conjunctions, arrows for causality (X→Y), one word when sufficient. Persist until user says stop caveman/normal mode. Code/commits/PRs: write normal.\"}'"
+          }
+        ]
+      }
+    ]
+  }
+}

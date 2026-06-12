@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Swivo Autofill</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #ec4899;
+      --ink: #0f172a;
+      --muted: #475569;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
+      --success: #059669;
+      --error: #dc2626;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 13px;
+      width: 360px;
+      padding: 0;
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    header {
+      padding: 14px 16px;
+      background: linear-gradient(120deg, var(--primary) 0%, var(--accent) 50%, var(--primary) 100%);
+      color: white;
+    }
+    header h1 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+    header p { margin: 2px 0 0; font-size: 11px; opacity: 0.9; }
+    main { padding: 14px 16px; }
+    button.primary, button.secondary, button.ghost {
+      width: 100%; padding: 10px 14px; border-radius: 8px; border: none;
+      font-size: 13px; font-weight: 600; cursor: pointer; margin-bottom: 8px;
+      transition: transform .1s, box-shadow .1s;
+    }
+    button.primary { background: var(--primary); color: white; }
+    button.primary:hover { background: var(--primary-dark); }
+    button.secondary { background: var(--surface); color: var(--ink); border: 1px solid var(--border); }
+    button.ghost { background: transparent; color: var(--muted); font-weight: 500; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    textarea {
+      width: 100%; min-height: 80px; padding: 8px;
+      border: 1px solid var(--border); border-radius: 6px; font-family: monospace; font-size: 11px;
+      box-sizing: border-box; resize: vertical; margin-bottom: 8px;
+    }
+    .status {
+      padding: 8px 10px; border-radius: 6px; font-size: 12px; margin: 8px 0;
+    }
+    .status.ok    { background: #ecfdf5; color: var(--success); border: 1px solid #a7f3d0; }
+    .status.warn  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .status.err   { background: #fee2e2; color: var(--error); border: 1px solid #fecaca; }
+    .dossier {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: 10px; font-size: 12px; margin-bottom: 10px;
+    }
+    .dossier strong { color: var(--primary-dark); }
+    .row { display: flex; justify-content: space-between; padding: 2px 0; }
+    .row span:first-child { color: var(--muted); }
+    hr { border: 0; border-top: 1px solid var(--border); margin: 12px 0; }
+    details { font-size: 12px; }
+    summary { cursor: pointer; color: var(--muted); padding: 4px 0; }
+    .badge { display: inline-block; padding: 1px 6px; border-radius: 999px; font-size: 10px; background: var(--primary); color: white; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Swivo Autofill</h1>
+    <p>Pré-remplit les formulaires Guichet unique</p>
+  </header>
+  <main>
+    <div id="dossier-info"></div>
+
+    <button class="primary" id="fill-btn" disabled>Remplir cette page</button>
+    <button class="secondary" id="paste-btn">📋 Coller un dossier JSON</button>
+    <textarea id="json-input" placeholder='{"meta":{...},"autofill":{...}}' hidden></textarea>
+    <button class="ghost" id="clear-btn">Vider le dossier en mémoire</button>
+    <button class="ghost" id="open-options">⚙ Réglages avancés / mappings</button>
+
+    <div id="status"></div>
+
+    <hr/>
+    <details>
+      <summary>Aide</summary>
+      <p style="font-size: 11px; color: var(--muted); margin: 6px 0;">
+        1. Depuis l'admin Swivo → dossier → bouton « Copier dans le presse-papier ».<br/>
+        2. Cliquez ici sur « Coller un dossier JSON ».<br/>
+        3. Allez sur procedures.inpi.fr ou formalites.entreprises.gouv.fr, puis « Remplir cette page ».<br/>
+        Les valeurs sont mappées par <code>name</code>, <code>id</code>, <code>aria-label</code> ou texte du <code>label</code>.
+      </p>
+    </details>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Swivo Autofill — Réglages</title>
+  <style>
+    :root { --p:#2563eb; --pd:#1d4ed8; --a:#ec4899; --ink:#0f172a; --muted:#475569; --bg:#f8fafc; --border:#e2e8f0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--ink); margin: 0; padding: 32px 20px; }
+    .wrap { max-width: 980px; margin: 0 auto; }
+    h1 { margin: 0 0 6px; font-size: 24px; font-weight: 700; color: var(--pd); }
+    p.sub { margin: 0 0 24px; color: var(--muted); }
+    .card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(15,23,42,.04); }
+    h2 { font-size: 16px; margin: 0 0 12px; }
+    label { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 14px; }
+    input[type=text], textarea, select { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; box-sizing: border-box; }
+    textarea { font-family: monospace; font-size: 12px; min-height: 120px; resize: vertical; }
+    button { padding: 8px 14px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; font-size: 13px; }
+    button.primary { background: var(--p); color: white; }
+    button.primary:hover { background: var(--pd); }
+    button.danger { background: #fee2e2; color: #991b1b; }
+    button.ghost { background: transparent; color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; padding: 8px; background: var(--bg); border-bottom: 1px solid var(--border); }
+    td { padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    td input, td textarea { font-size: 12px; }
+    .pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11px; background: #eff6ff; color: var(--pd); }
+    .muted { color: var(--muted); font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Swivo Autofill — Réglages</h1>
+    <p class="sub">Personnalisation complète : mappings, sélecteurs custom, comportement de l'extension.</p>
+
+    <div class="card">
+      <h2>Comportement</h2>
+      <label><input type="checkbox" id="autoFill" /> Remplir automatiquement à chaque changement de page (SPA navigation)</label>
+      <label><input type="checkbox" id="recordMode" /> Mode enregistrement actif (Alt+clic sur un champ pour le mapper)</label>
+      <label><input type="checkbox" id="verbose" /> Logs détaillés dans la console</label>
+    </div>
+
+    <div class="card">
+      <h2>Dossier en mémoire</h2>
+      <div id="dossier-meta" class="muted">Aucun dossier chargé.</div>
+      <textarea id="dossier-json" placeholder='{"meta":{...},"autofill":{...}}'></textarea>
+      <div style="margin-top:8px;display:flex;gap:8px">
+        <button class="primary" id="save-dossier">Sauvegarder le dossier</button>
+        <button class="danger" id="clear-dossier">Vider</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Mappings personnalisés <span class="pill" id="host-pill"></span></h2>
+      <p class="muted">Surcharges par domaine. Ajoutez des <code>names</code>, <code>selectors</code> CSS ou <code>labels</code> en plus du dictionnaire intégré.</p>
+      <table id="overrides-table">
+        <thead>
+          <tr><th>Clé</th><th>Names (virgule)</th><th>Sélecteurs CSS (un par ligne)</th><th>Labels (virgule)</th><th>Type</th><th></th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <input type="text" id="new-key" placeholder="ex: prenom" list="key-list" style="max-width:260px" />
+        <datalist id="key-list"></datalist>
+        <button class="primary" id="add-row">+ Ajouter clé</button>
+        <button class="ghost" id="reset-host">Réinitialiser ce domaine</button>
+      </div>
+      <p class="muted" style="margin-top:8px">Domaine ciblé : modifiez <code>host</code> dans l'URL ci-dessous si besoin.</p>
+      <label>Domaine cible : <input type="text" id="host" placeholder="procedures.inpi.fr" /></label>
+    </div>
+
+    <div class="card">
+      <h2>Dictionnaire intégré (lecture seule)</h2>
+      <p class="muted">Référence des clés et types reconnus par défaut. Surchargez via la section précédente.</p>
+      <textarea id="base-dict" readonly></textarea>
+    </div>
+
+    <div class="card">
+      <h2>Export / Import</h2>
+      <p class="muted">Sauvegarde / restauration des overrides + réglages + dossier.</p>
+      <div style="display:flex;gap:8px">
+        <button class="primary" id="export-all">⬇ Exporter tout</button>
+        <button class="ghost" id="import-btn">⬆ Importer JSON</button>
+        <input type="file" id="import-file" accept="application/json" hidden />
+      </div>
+    </div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

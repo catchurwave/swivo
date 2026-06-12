@@ -1,0 +1,276 @@
+/*
+  Swivo brand skin for WooCommerce front pages (cart, checkout, thank-you,
+  my-account). Mirrors the SPA design tokens so users feel like they never
+  left the Swivo experience while paying through WC + Stripe.
+*/
+
+:root {
+  /* Mirror SPA design tokens — keep them in sync with theme.css */
+  --swivo-primary:    #7c3aed;
+  --swivo-primary-700:#5b21b6;
+  --swivo-accent:     #ec4899;
+  --swivo-accent-600: #db2777;
+  --swivo-secondary:  #06b6d4;
+  --swivo-ink:        #0f172a;
+  --swivo-ink-muted:  #475569;
+  --swivo-surface:    #ffffff;
+  --swivo-muted:      #f8fafc;
+  --swivo-border:     #e2e8f0;
+  --swivo-radius:     14px;
+  --swivo-shadow:     0 8px 32px -8px rgba(15, 23, 42, 0.12), 0 2px 8px -2px rgba(15, 23, 42, 0.08);
+}
+
+/* ─── Layout shell ─────────────────────────────────────────────── */
+body.woocommerce,
+body.woocommerce-page,
+body.woocommerce-checkout,
+body.woocommerce-cart,
+body.woocommerce-account,
+body.woocommerce-order-received {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color: var(--swivo-ink);
+  background: linear-gradient(180deg, #f5f3ff 0%, var(--swivo-muted) 240px);
+  min-height: 100vh;
+}
+
+/* Swivo top bar — gets injected by the plugin via filter on page content */
+.swivo-wc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 20px 24px;
+}
+.swivo-wc-header a.swivo-back {
+  color: var(--swivo-ink-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.swivo-wc-header a.swivo-back:hover { color: var(--swivo-primary); }
+.swivo-wc-header .swivo-logo {
+  height: 28px;
+  width: auto;
+}
+.swivo-wc-trust {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--swivo-ink-muted);
+}
+.swivo-wc-trust svg { color: var(--swivo-secondary); }
+
+/* WooCommerce content container — convert into a centered, carded layout */
+.woocommerce, .woocommerce-page .entry-content, .woocommerce-account .woocommerce {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 8px 24px 64px;
+}
+.woocommerce form.checkout,
+.woocommerce-cart .cart-collaterals,
+.woocommerce-cart table.cart,
+.woocommerce-order-received .woocommerce-order,
+.woocommerce-MyAccount-content {
+  background: var(--swivo-surface);
+  border: 1px solid var(--swivo-border);
+  border-radius: var(--swivo-radius);
+  padding: 24px 28px;
+  box-shadow: var(--swivo-shadow);
+}
+
+/* Page titles */
+h1.entry-title,
+h2.woocommerce-column__title,
+h3#order_review_heading {
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--swivo-ink);
+}
+
+/* ─── Form fields ──────────────────────────────────────────────── */
+.woocommerce form .form-row label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--swivo-ink);
+  margin-bottom: 6px;
+}
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
+.woocommerce form .form-row .select2-container--default .select2-selection--single,
+.woocommerce form .form-row select {
+  width: 100%;
+  border-radius: 10px !important;
+  border: 1px solid var(--swivo-border) !important;
+  padding: 10px 14px !important;
+  background: var(--swivo-surface);
+  color: var(--swivo-ink);
+  font-size: 14px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.woocommerce form .form-row input.input-text:focus,
+.woocommerce form .form-row textarea:focus,
+.woocommerce form .form-row select:focus {
+  border-color: var(--swivo-primary) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15) !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 24px !important;
+  padding-left: 4px !important;
+}
+
+/* ─── Buttons (Swivo pill gradient with animated hover) ─────────── */
+.woocommerce button.button,
+.woocommerce a.button,
+.woocommerce input.button,
+#place_order {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 26px !important;
+  border-radius: 9999px !important;
+  font-weight: 700;
+  font-size: 14px;
+  color: white !important;
+  background: linear-gradient(120deg,
+    var(--swivo-primary) 0%,
+    var(--swivo-accent)  35%,
+    var(--swivo-primary) 65%,
+    var(--swivo-accent) 100%) !important;
+  background-size: 220% 100% !important;
+  background-position: 0% 50% !important;
+  border: none !important;
+  text-shadow: none !important;
+  box-shadow: var(--swivo-shadow);
+  transition: background-position .6s ease, transform .2s ease, filter .2s ease !important;
+}
+.woocommerce button.button:hover,
+.woocommerce a.button:hover,
+.woocommerce input.button:hover,
+#place_order:hover {
+  background-position: 100% 50% !important;
+  transform: translateY(-1px);
+  filter: saturate(1.1);
+}
+.woocommerce a.button.wc-forward { background-image: linear-gradient(120deg, var(--swivo-secondary), var(--swivo-primary), var(--swivo-secondary), var(--swivo-primary)) !important; }
+
+/* Quantity/secondary buttons keep ghost styling */
+.woocommerce-cart-form__contents .product-remove a {
+  color: var(--swivo-ink-muted);
+  font-weight: 700;
+  text-decoration: none;
+}
+.woocommerce-cart-form__contents .product-remove a:hover { color: var(--swivo-accent-600); }
+
+/* ─── Cards: cart totals, order summary, my-account ─────────────── */
+.cart_totals h2, .woocommerce-shipping-fields h3, .woocommerce-billing-fields h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--swivo-border);
+}
+.woocommerce-checkout-review-order-table,
+.woocommerce table.shop_table {
+  border: 1px solid var(--swivo-border) !important;
+  border-radius: var(--swivo-radius) !important;
+  overflow: hidden;
+  border-collapse: separate !important;
+  border-spacing: 0;
+}
+.woocommerce table.shop_table th,
+.woocommerce table.shop_table td {
+  border-top: 1px solid var(--swivo-border) !important;
+  padding: 12px 16px !important;
+}
+.woocommerce table.shop_table tr:first-child th,
+.woocommerce table.shop_table tr:first-child td { border-top: none !important; }
+
+.woocommerce table.shop_table thead th { background: var(--swivo-muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--swivo-ink-muted); }
+.woocommerce table.shop_table .cart_item td { background: var(--swivo-surface); }
+.woocommerce table.shop_table tfoot th, .woocommerce table.shop_table tfoot td {
+  background: linear-gradient(180deg, #f5f3ff, var(--swivo-surface));
+  font-weight: 700;
+}
+.woocommerce-Price-amount.amount bdi { color: var(--swivo-primary-700); font-weight: 700; }
+
+/* Order received page */
+.woocommerce-order-received .woocommerce-notice--success,
+.woocommerce-message,
+.woocommerce-info {
+  background: #ecfeff !important;
+  border-left: 4px solid var(--swivo-secondary) !important;
+  color: var(--swivo-ink) !important;
+  border-radius: 10px !important;
+  padding: 16px 20px !important;
+}
+.woocommerce-message::before,
+.woocommerce-info::before { color: var(--swivo-secondary) !important; }
+
+.woocommerce-error {
+  background: #fef2f2 !important;
+  border-left: 4px solid #dc2626 !important;
+  color: #991b1b !important;
+  border-radius: 10px !important;
+}
+
+/* Account navigation */
+.woocommerce-MyAccount-navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.woocommerce-MyAccount-navigation ul li a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--swivo-ink-muted);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background .15s, color .15s;
+}
+.woocommerce-MyAccount-navigation ul li a:hover { background: var(--swivo-muted); color: var(--swivo-ink); }
+.woocommerce-MyAccount-navigation ul li.is-active a {
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--swivo-primary-700);
+}
+
+/* Payment methods box on checkout */
+.woocommerce-checkout #payment {
+  background: var(--swivo-muted) !important;
+  border: 1px solid var(--swivo-border) !important;
+  border-radius: var(--swivo-radius) !important;
+  margin-top: 16px;
+}
+.woocommerce-checkout #payment ul.payment_methods { padding: 16px 20px !important; }
+.woocommerce-checkout #payment ul.payment_methods li { background: var(--swivo-surface); border: 1px solid var(--swivo-border); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px !important; transition: border-color .15s; }
+.woocommerce-checkout #payment ul.payment_methods li:has(input:checked) { border-color: var(--swivo-primary); box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12); }
+.woocommerce-checkout #payment div.payment_box { background: var(--swivo-muted) !important; border-radius: 10px !important; }
+.woocommerce-checkout #payment div.payment_box::before { display: none !important; }
+
+/* Hide noisy elements that hurt trust on a simple SaaS checkout */
+.woocommerce-form-coupon-toggle,
+.woocommerce-form-login-toggle,
+.woocommerce form .form-row .optional,
+.woocommerce-additional-fields h3 { display: none !important; }
+
+/* Footer mini band */
+.swivo-wc-footer {
+  text-align: center;
+  margin: 32px auto 0;
+  max-width: 920px;
+  padding: 16px 24px;
+  color: var(--swivo-ink-muted);
+  font-size: 12px;
+}
+.swivo-wc-footer strong { color: var(--swivo-ink); }
