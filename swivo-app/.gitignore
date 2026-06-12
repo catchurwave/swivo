@@ -8,3 +8,8 @@ dist-server
 storybook-static
 .tsbuildinfo
 tsconfig.tsbuildinfo
+
+# Playwright test artifacts
+playwright-report
+.playwright
+test-results
