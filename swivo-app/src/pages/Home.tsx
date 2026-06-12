@@ -119,7 +119,7 @@ export function HomePage() {
                 </span>
               </Reveal>
               <Reveal direction="up" delay={120}>
-                <h1 className="mt-5 font-display text-4xl font-bold tracking-tight text-ink sm:text-6xl lg:text-7xl">
+                <h1 className="mt-5 font-display text-3xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
                   Créez votre <span className="bg-gradient-to-r from-primary-600 via-accent-500 to-primary-600 bg-[length:200%_100%] bg-clip-text text-transparent animate-bg-pan">micro-entreprise</span> en 5 minutes.
                 </h1>
               </Reveal>
