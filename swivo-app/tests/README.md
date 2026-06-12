@@ -19,10 +19,12 @@ tests/
 
 ## Running Tests
 
-### All tests (headless)
+### All tests (headless) — auto-opens report on local
 ```bash
 npm run test:e2e
 ```
+On local dev: runs tests → auto-opens HTML report in browser  
+On CI: skips report (no $CI env check needed, runs silently)
 
 ### Watch mode (re-run on code changes)
 ```bash
@@ -38,6 +40,7 @@ npm run test:e2e:ui
 ```bash
 npm run test:e2e:report
 ```
+Opens HTML report manually (already at `./playwright-report/index.html`)
 
 ### Specific test file
 ```bash

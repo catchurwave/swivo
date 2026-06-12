@@ -14,7 +14,7 @@
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build -o storybook-static",
     "dev:all": "concurrently -k -n vite,sb -c blue,magenta \"npm:dev\" \"npm:storybook\"",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright test && ([ -z \"$CI\" ] && npm run test:e2e:report || true)",
     "test:e2e:watch": "playwright test --watch",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright show-report"
