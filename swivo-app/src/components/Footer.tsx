@@ -36,7 +36,7 @@ export function Footer() {
   return (
     <footer className="mt-24 border-t border-surface-border bg-surface">
       <div className="container-page py-14">
-        <div className="grid gap-10 lg:grid-cols-5">
+        <div className="grid gap-10 grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Logo />
             <p className="mt-4 max-w-sm text-sm text-ink-muted">

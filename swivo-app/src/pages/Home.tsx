@@ -94,7 +94,7 @@ export function HomePage() {
           <GestionActiveBanner user={user!} />
         </section>
       ) : (
-      <section className="relative overflow-hidden pb-24">
+      <section className="relative overflow-hidden pb-4 lg:pb-24">
         {/* base pastel backdrop */}
         <div aria-hidden="true" className="absolute inset-0 -z-30 bg-gradient-to-br from-primary-50 via-surface to-secondary-50 bg-[length:200%_200%] animate-bg-pan" />
         {/* dot pattern very faint */}
@@ -109,7 +109,7 @@ export function HomePage() {
           <path d="M0 60 Q 360 0 720 60 T 1440 60 L 1440 120 L 0 120 Z" fill="rgb(var(--color-surface-muted))" />
         </svg>
 
-        <div className="container-page pt-4 pb-32">
+        <div className="container-page pt-4 lg:pb-32">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <Reveal direction="up" delay={0}>
@@ -119,12 +119,12 @@ export function HomePage() {
                 </span>
               </Reveal>
               <Reveal direction="up" delay={120}>
-                <h1 className="mt-5 font-display text-3xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
+                <h1 className="mt-5 font-display text-2xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
                   Créez votre <span className="bg-gradient-to-r from-primary-600 via-accent-500 to-primary-600 bg-[length:200%_100%] bg-clip-text text-transparent animate-bg-pan">micro-entreprise</span> en 5 minutes.
                 </h1>
               </Reveal>
               <Reveal direction="up" delay={240}>
-                <p className="mt-6 max-w-xl text-xl text-ink-muted">
+                <p className="mt-6 max-w-xl text-sm lg:text-xl text-ink-muted">
                   Déclaration accompagnée, simulateur URSSAF, facturation, rappels d’échéances.
                   <span className="font-semibold text-ink"> Tout pour piloter votre micro, sans paperasse.</span>
                 </p>
@@ -168,12 +168,12 @@ export function HomePage() {
       )}
 
       {/* STEPS */}
-      <section className="container-page py-24">
+      <section className="container-page lg:py-24">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <span className="badge-secondary"><Icon.Spark className="h-3.5 w-3.5" /> Parcours</span>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">Trois étapes, zéro paperasse</h2>
-            <p className="mt-4 text-lg text-ink-muted">Pensé pour aller vite, sans sacrifier la conformité.</p>
+            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-ink sm:text-5xl">Trois étapes, zéro paperasse</h2>
+            <p className="mt-4 text-sm lg:text-lg text-ink-muted">Pensé pour aller vite, sans sacrifier la conformité.</p>
           </div>
         </Reveal>
         <ol className="mt-14 grid gap-6 md:grid-cols-3">
@@ -195,7 +195,7 @@ export function HomePage() {
 
       {/* FEATURE SHOWCASE — illustrations side */}
       <section className="bg-surface border-y border-surface-border">
-        <div className="container-page py-24 space-y-24">
+        <div className="container-page py-4 lg:py-24 space-y-5 lg:space-y-24">
           <FeatureRow
             badge="Chat IA"
             title="Une conversation, pas un formulaire."
@@ -222,11 +222,11 @@ export function HomePage() {
       </section>
 
       {/* WHY US — feature grid */}
-      <section className="container-page py-24">
+      <section className="container-page py-4 lg:py-24">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">Pourquoi nous choisir</h2>
-            <p className="mt-4 text-lg text-ink-muted">Six raisons concrètes de démarrer avec Swivo.</p>
+            <h2 className="font-display text-2xl lg:text-4xl font-bold tracking-tight text-ink sm:text-5xl">Pourquoi nous choisir</h2>
+            <p className="mt-4 text-sm lg:text-lg text-ink-muted">Six raisons concrètes de démarrer avec Swivo.</p>
           </div>
         </Reveal>
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -246,11 +246,11 @@ export function HomePage() {
 
       {/* POUR QUI ? — profils micro typiques */}
       <section className="bg-surface border-y border-surface-border">
-        <div className="container-page py-24">
+        <div className="container-page py-4 lg:py-24">
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">
               <span className="badge-primary"><Icon.Briefcase className="h-3.5 w-3.5" /> Pour qui ?</span>
-              <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">La micro, faite pour qui ?</h2>
+              <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-ink sm:text-5xl">La micro, faite pour qui ?</h2>
               <p className="mt-3 text-lg text-ink-muted">Freelances, artisans, consultants, e-commerçants, créatifs — sous 188 700 € (vente) ou 77 700 € (service) annuel.</p>
             </div>
           </Reveal>
@@ -263,7 +263,7 @@ export function HomePage() {
             ].map((p, i) => (
               <Reveal key={p.title} delay={i * 80} direction="up">
                 <div className="card h-full p-6">
-                  <span className="text-3xl">{p.icon}</span>
+                  <span className="text-2xl lg:text-3xl">{p.icon}</span>
                   <h3 className="mt-3 font-display text-lg font-bold text-ink">{p.title}</h3>
                   <p className="mt-1 text-sm text-ink-muted">{p.body}</p>
                 </div>
@@ -275,17 +275,17 @@ export function HomePage() {
 
       {/* GESTION upsell — hidden when already subscribed (banner shown at top) */}
       {!gestionActive && (
-        <section className="container-page py-24">
+        <section className="container-page py-4 lg:py-24">
           <GestionUpsell />
         </section>
       )}
 
       {/* COMPARE TABLE */}
-      <section className="container-page py-24">
+      <section className="container-page py-4 lg:py-24">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">Pourquoi Swivo ?</h2>
-            <p className="mt-4 text-lg text-ink-muted">Comparaison honnête, chiffres réels.</p>
+            <h2 className="font-display text-2xl lg:text-4xl font-bold tracking-tight text-ink sm:text-5xl">Pourquoi Swivo ?</h2>
+            <p className="mt-4 text-sm lg:text-lg text-ink-muted">Comparaison honnête, chiffres réels.</p>
             <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-secondary-300 bg-secondary-50 px-4 py-1.5 text-sm font-medium text-secondary-800">
               🏦 Aucun compte bancaire imposé — gardez votre banque
             </p>
@@ -316,12 +316,12 @@ export function HomePage() {
       </section>
 
       {/* REVIEWS CAROUSEL */}
-      <section className="container-page py-24">
+      <section className="container-page py-4 lg:py-24">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <span className="badge-secondary"><Icon.Sparkle className="h-3.5 w-3.5" /> Avis vérifiés</span>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">Ils ont lancé leur boîte avec Swivo</h2>
-            <p className="mt-4 text-lg text-ink-muted">Plus de 12&nbsp;000 entrepreneurs nous font confiance. Voici ce qu’ils en disent.</p>
+            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-ink sm:text-5xl">Ils ont lancé leur boîte avec Swivo</h2>
+            <p className="mt-4 text-sm lg:text-lg text-ink-muted">Plus de 12&nbsp;000 entrepreneurs nous font confiance. Voici ce qu’ils en disent.</p>
           </div>
         </Reveal>
         <Reveal delay={120}>
@@ -334,8 +334,8 @@ export function HomePage() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <span className="badge-primary"><Icon.Building className="h-3.5 w-3.5" /> Portraits</span>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">Cinq parcours, une même décision</h2>
-            <p className="mt-4 text-lg text-ink-muted">Ils ont sauté le pas. Voici qui ils sont et pourquoi ils ont créé leur entreprise.</p>
+            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-ink sm:text-5xl">Cinq parcours, une même décision</h2>
+            <p className="mt-4 text-sm lg:text-lg text-ink-muted">Ils ont sauté le pas. Voici qui ils sont et pourquoi ils ont créé leur entreprise.</p>
           </div>
         </Reveal>
         <FoundersBlock />
@@ -349,7 +349,7 @@ export function HomePage() {
             <div aria-hidden="true" className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-white/15 blur-3xl animate-float-lg" />
             <div className="relative grid items-center gap-10 p-12 md:grid-cols-2">
               <div>
-                <h2 className="font-display text-4xl font-bold sm:text-5xl">Tarifs simples, sans surprise.</h2>
+                <h2 className="font-display text-2xl lg:text-4xl font-bold sm:text-5xl">Tarifs simples, sans surprise.</h2>
                 <p className="mt-4 text-lg text-ink-inverse/85">
                   <strong>29,90 €</strong> pour créer · <strong>9,90 €/mois</strong> pour gérer.
                 </p>
@@ -377,8 +377,8 @@ export function HomePage() {
       <section className="container-page pb-28">
         <div className="grid gap-12 lg:grid-cols-3">
           <Reveal>
-            <h2 className="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">Questions fréquentes</h2>
-            <p className="mt-4 text-lg text-ink-muted">Toutes les réponses sur la création et la gestion d’entreprise.</p>
+            <h2 className="font-display text-2xl lg:text-4xl font-bold tracking-tight text-ink sm:text-5xl">Questions fréquentes</h2>
+            <p className="mt-4 text-sm lg:text-lg text-ink-muted">Toutes les réponses sur la création et la gestion d’entreprise.</p>
             <Link to="/faq" className="btn-outline mt-6">Voir toutes les FAQ</Link>
             <div className="mt-8">
               <IllustrationDossier className="h-44 w-full" />
@@ -412,11 +412,11 @@ function GestionUpsell() {
         <div className="relative grid items-center gap-10 lg:grid-cols-2">
           <div>
             <span className="badge-primary"><Icon.Sparkle className="h-3.5 w-3.5" /> Après création</span>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-ink sm:text-5xl">
               Pilotez votre entreprise pour{' '}
               <span className="bg-gradient-to-r from-primary-600 via-accent-500 to-primary-600 bg-[length:200%_100%] bg-clip-text text-transparent animate-bg-pan">9,90 €/mois</span>
             </h2>
-            <p className="mt-4 text-lg text-ink-muted">
+            <p className="mt-4 text-sm lg:text-lg text-ink-muted">
               La formule Gestion débloque tous vos outils du quotidien : facturation, modèles juridiques, calculateurs, mise en pause, fermeture assistée. Sans engagement.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
@@ -477,10 +477,10 @@ function GestionActiveBanner({ user }: { user: { name: string; gestion?: { until
               <span className="inline-flex h-2 w-2 rounded-full bg-secondary-500 animate-pulse" />
               Formule Gestion active
             </span>
-            <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+            <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-ink sm:text-5xl">
               {getDayGreeting()} {firstName || 'à toi'} 👋 Bonne journée chez Swivo.
             </h2>
-            <p className="mt-4 text-lg text-ink-muted">
+            <p className="mt-4 text-sm lg:text-lg text-ink-muted">
               Tu profites de tous les outils de pilotage : facturation, modèles juridiques, calculateurs avancés, support prioritaire.
               {fmtDate && <> Prochaine échéance : <strong className="text-ink">{fmtDate}</strong>.</>}
             </p>
@@ -693,8 +693,8 @@ function FeatureRow({ badge, title, body, cta, illustration, reverse }: {
     <div className={`grid items-center gap-10 lg:grid-cols-2 ${reverse ? 'lg:[&>*:first-child]:order-2' : ''}`}>
       <Reveal direction={reverse ? 'right' : 'left'}>
         <span className="badge-primary"><Icon.Sparkle className="h-3.5 w-3.5" /> {badge}</span>
-        <h3 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h3>
-        <p className="mt-4 text-lg text-ink-muted">{body}</p>
+        <h3 className="mt-3 font-display text-2xl lg:text-3xl font-bold tracking-tight text-ink sm:text-2xl lg:text-4xl">{title}</h3>
+        <p className="mt-4 text-sm lg:text-lg text-ink-muted">{body}</p>
         <Link to={cta.to} className="btn-primary mt-6">{cta.label} <Icon.Arrow className="h-4 w-4" /></Link>
       </Reveal>
       <Reveal direction={reverse ? 'left' : 'right'} delay={100}>

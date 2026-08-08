@@ -1,0 +1,14 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "env": {
+    "VITE_WP_API_URL": "@vite_wp_api_url",
+    "VITE_SITE_URL": "@vite_site_url",
+    "VITE_BASE": "@vite_base"
+  },
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "nodejs20.x"
+    }
+  }
+}
