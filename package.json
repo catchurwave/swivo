@@ -1,0 +1,8 @@
+{
+  "name": "swivo",
+  "private": true,
+  "scripts": {
+    "build": "cd swivo-app && npm install && npm run build",
+    "dev": "cd swivo-app && npm run dev"
+  }
+}
