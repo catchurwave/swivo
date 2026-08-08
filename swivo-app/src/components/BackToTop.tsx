@@ -16,7 +16,7 @@ export function BackToTop({ threshold = 400 }: { threshold?: number }) {
 
   return (
     <div className={`fixed bottom-5 right-5 z-40 transition-all duration-300 ${visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'}`}>
-      <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full border-2 border-primary-500 animate-pulse-ring " />
+      <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full border-2 border-primary-500 animate-pulse-ring" />
       <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full border-2 border-primary-500 animate-pulse-ring" style={{ animationDelay: '0.9s' }} />
       <button
         onClick={up}

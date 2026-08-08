@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /espace-createur
+Disallow: /inscription
+Disallow: /connexion
+Disallow: /wp/
+Disallow: /wp-admin
+Disallow: /wp-json
+
+Sitemap: https://swivo.fr/sitemap.xml

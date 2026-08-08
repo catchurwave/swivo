@@ -1,0 +1,7 @@
+import{j as e}from"./jsx-runtime-BYYWji4R.js";import{r as c}from"./index-ClcD9ViR.js";import{H as l}from"./Header-DALnEOKb.js";import{F as u}from"./Footer-VLcXUCOz.js";import{C as d}from"./CookieBanner-CEIxYCxe.js";import{C as f}from"./ChatbotWidget-DZqzwlub.js";import{b as x,O as j}from"./index-DVNimI6A.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-C8Ciso8e.js";import"./index-Brl4xq4Y.js";import"./Logo-CTCgdrux.js";import"./ThemeToggle-CFD3vgFI.js";import"./auth-DZIDgx-z.js";function h(){const{pathname:n}=x();return c.useEffect(()=>{window.scrollTo({top:0,behavior:"instant"})},[n]),e.jsxs("div",{className:"min-h-screen flex flex-col",children:[e.jsx(l,{}),e.jsx("main",{id:"main",className:"flex-1",children:e.jsx(j,{})}),e.jsx(u,{}),e.jsx(d,{}),e.jsx(f,{})]})}const N={title:"Layout/Layout",component:h,tags:["autodocs"],parameters:{layout:"fullscreen"}},o={},r={parameters:{viewport:{defaultViewport:"mobile"}}};var t,a,s;o.parameters={...o.parameters,docs:{...(t=o.parameters)==null?void 0:t.docs,source:{originalSource:"{}",...(s=(a=o.parameters)==null?void 0:a.docs)==null?void 0:s.source}}};var m,i,p;r.parameters={...r.parameters,docs:{...(m=r.parameters)==null?void 0:m.docs,source:{originalSource:`{
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile'
+    }
+  }
+}`,...(p=(i=r.parameters)==null?void 0:i.docs)==null?void 0:p.source}}};const V=["Shell","Mobile"];export{r as Mobile,o as Shell,V as __namedExportsOrder,N as default};
