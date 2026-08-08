@@ -1,0 +1,17 @@
+node_modules
+dist
+dist-server
+.env
+.env.local
+*.log
+.DS_Store
+storybook-static
+.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Playwright test artifacts
+playwright-report
+.playwright
+test-results
+.vercel
+.env*
